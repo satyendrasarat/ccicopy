@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCI Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        h2 {
+            color: #333;
+            width: 100%;
+        }
+
+        .data-container {
+            width: 48%; /* Adjust as needed based on your design */
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .buy-alert, .sell-alert {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .data-container {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="data-container">
+        <h2>NIFTY CCI Data Table</h2>
+        <div id="nifty_data" class="{{ 'buy-alert' if 'BUY' in nifty_data else '' }}{{ 'sell-alert' if 'SELL' in nifty_data else '' }}">{{ nifty_data | safe }}</div>
+    </div>
+    <div class="data-container">
+        <h2>BANKNIFTY CCI Data Table</h2>
+        <div id="banknifty_data" class="{{ 'buy-alert' if 'BUY' in banknifty_data else '' }}{{ 'sell-alert' if 'SELL' in banknifty_data else '' }}">{{ banknifty_data | safe }}</div>
+    </div>
+
+    <script>
+        // Automatically reload the page every 3 seconds
+        setInterval(function() {
+            location.reload();
+        }, 3000);
+    </script>
+</body>
+</html>
