@@ -225,12 +225,13 @@ def update_data():
   market_open = time(3, 45)
   market_close = time(10, 00)
 
-  holiday_dates = [
-      "26-Jan-2023", "07-Mar-2023", "30-Mar-2023", "04-Apr-2023",
-      "07-Apr-2023", "14-Apr-2023", "01-May-2023", "29-Jun-2023",
-      "15-Aug-2023", "19-Sep-2023", "02-Oct-2023", "24-Oct-2023",
-      "14-Nov-2023", "27-Nov-2023", "25-Dec-2023"
-  ]
+  holiday_dates_2024 = [
+    "26-Jan-2024", "08-Mar-2024", "25-Mar-2024", "29-Mar-2024",
+    "11-Apr-2024", "17-Apr-2024", "01-May-2024", "17-Jun-2024",
+    "17-Jul-2024", "15-Aug-2024", "02-Oct-2024", "01-Nov-2024",
+    "15-Nov-2024", "25-Dec-2024"
+]
+
 
   # Check if it's a weekday, not a holiday, and within market hours
   if 0 <= today_weekday <= 4 and today not in holiday_dates and market_open <= now <= market_close:
